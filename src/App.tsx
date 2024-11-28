@@ -1,7 +1,12 @@
-import "./App.css";
+import './App.css';
+import logo from './assets/images/logo.png';
 
 function App() {
-  return <>hi</>;
+  return (
+    <>
+      <img src={logo} alt="favicon" width={100} />
+    </>
+  );
 }
 
 export default App;
