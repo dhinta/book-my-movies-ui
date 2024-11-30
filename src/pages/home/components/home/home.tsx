@@ -1,5 +1,9 @@
-import { Header } from '@shared/header';
+import { Carousel } from '@/common/components';
 
 export function Home() {
-  return <Header />;
+  return (
+    <>
+      <Carousel />
+    </>
+  );
 }
