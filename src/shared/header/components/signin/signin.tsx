@@ -15,7 +15,7 @@ export function Signin() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="bg-red-600 ml-4 text-white h-10">Signin</Button>
+        <Button className="bg-red-600 ml-8 text-white h-10">Signin</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>

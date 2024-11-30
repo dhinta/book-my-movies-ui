@@ -16,12 +16,12 @@ export function Header() {
   const isLoggedIn = false;
 
   return (
-    <header className="flex container items-center py-3">
+    <header className="flex items-center py-3 max-w-[1280px] mx-auto">
       <Link to={'/'} className="w-28">
         <img src={logo} alt="logo" />
       </Link>
 
-      <div className="relative ml-4 w-2/3">
+      <div className="relative ml-8 w-2/3">
         <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
         <input
           type="search"
@@ -36,7 +36,7 @@ export function Header() {
       {!isLoggedIn && <Signin />}
 
       <Select>
-        <SelectTrigger className="w-[150px] h-10 ml-4">
+        <SelectTrigger className="w-[150px] h-10 ml-8">
           <SelectValue placeholder="City" />
         </SelectTrigger>
         <SelectContent>
