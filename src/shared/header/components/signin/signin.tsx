@@ -1,3 +1,4 @@
+import googleImg from '@/assets/images/googlelogo.svg';
 import { Button } from '@/vendors/ui/button';
 import {
   Dialog,
@@ -26,7 +27,7 @@ export function Signin() {
         </DialogHeader>
         <div className="flex flex-col mt-4">
           <Button variant="outline" className="w-full p-6 mb-8">
-            <img width={16} src="/src/assets/images/googlelogo.svg" />
+            <img width={16} src={googleImg} />
             Continue with Google
           </Button>
           <Button variant="outline" className="w-full p-6">
