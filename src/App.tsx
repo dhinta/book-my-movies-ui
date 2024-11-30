@@ -1,10 +1,11 @@
+import { RouterProvider } from 'react-router-dom';
 import './App.css';
-import logo from './assets/images/logo.png';
+import { routes } from './routes';
 
 function App() {
   return (
     <>
-      <img src={logo} alt="favicon" width={100} />
+      <RouterProvider router={routes} />
     </>
   );
 }
