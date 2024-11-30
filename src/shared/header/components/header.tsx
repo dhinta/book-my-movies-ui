@@ -10,15 +10,18 @@ import {
 
 import { Menu, Search } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Signin } from './signin';
 
 export function Header() {
+  const isLoggedIn = false;
+
   return (
     <header className="flex container items-center py-3">
       <Link to={'/'} className="w-28">
         <img src={logo} alt="logo" />
       </Link>
 
-      <div className="relative ml-4 w-3/4">
+      <div className="relative ml-4 w-2/3">
         <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
         <input
           type="search"
@@ -30,8 +33,10 @@ export function Header() {
         />
       </div>
 
+      {!isLoggedIn && <Signin />}
+
       <Select>
-        <SelectTrigger className="w-[150px]  h-10 ml-4">
+        <SelectTrigger className="w-[150px] h-10 ml-4">
           <SelectValue placeholder="City" />
         </SelectTrigger>
         <SelectContent>
@@ -41,9 +46,11 @@ export function Header() {
         </SelectContent>
       </Select>
 
-      <Button variant="ghost" size="icon">
-        <Menu />
-      </Button>
+      {isLoggedIn && (
+        <Button variant="ghost" size="icon">
+          <Menu />
+        </Button>
+      )}
     </header>
   );
 }
