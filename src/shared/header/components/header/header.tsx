@@ -10,7 +10,7 @@ import {
 
 import { Menu, Search } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { Signin } from './signin';
+import { Signin } from '../signin/signin';
 
 export function Header() {
   const isLoggedIn = false;
