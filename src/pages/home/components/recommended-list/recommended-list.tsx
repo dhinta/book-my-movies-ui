@@ -1,4 +1,5 @@
 import { MovieCard } from '@/common/components';
+import { Movie } from '@common/models';
 import { CircleChevronLeft, CircleChevronRight } from 'lucide-react';
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
@@ -10,12 +11,21 @@ const movie = {
   overview:
     "Jake Sully and Ney'tiri have formed a family and are doing everything to stay together, but they are faced with a new threat from the past that could keep them apart.",
   genres: 'Action, Adventure, Fantasy',
+  languages: ['English', 'Spanish'],
+  casts: [
+    "Auli'i Cravalho",
+    'Dwayne Johnson',
+    'Alan Tudyk',
+    'Nicole Scherzinger',
+    'Temuera Morrison',
+    'Jemaine Clement',
+  ],
   posterPath: '/avatar.jpg',
   thumbnailPath: '/images/avatar.jpg',
   releaseDate: '2022-12-14',
   likeCount: 0,
   rating: 0,
-  ratedBy: 0,
+  ratedBy: '45k',
   runtime: 0,
   budget: 0,
   revenue: 0,
@@ -29,7 +39,7 @@ const movies = Array.from({ length: 13 }, (_, index) => ({
 
 export function RecommendedList() {
   const ref = useRef<HTMLDivElement>(null);
-  const { left, currentIndex, visibleCardsNum, onNavigate } = useSlider(
+  const { left, currentIndex, visibleCardsNum, onNavigate } = useSlider<Movie>(
     movies,
     ref,
     '.recommended-movie-card',

@@ -7,12 +7,22 @@ const movie = {
   overview:
     'After receiving an unexpected call from her wayfinding ancestors, Moana journeys alongside Maui and a new crew to the far seas of Oceania and into dangerous, long-lost waters for an adventure unlike anything she`s ever faced.',
   genres: 'Action, Adventure, Fantasy',
+  languages: ['English', 'Spanish'],
+  casts: [
+    "Auli'i Cravalho",
+    'Dwayne Johnson',
+    'Alan Tudyk',
+    'Nicole Scherzinger',
+    'Temuera Morrison',
+    'Jemaine Clement',
+  ],
+
   posterPath: '/images/moana.jpg',
   thumbnailPath: '/images/moana-thumb.jpg',
   releaseDate: '2022-12-14',
   likeCount: 10,
   rating: 6.9,
-  ratedBy: 5155454,
+  ratedBy: '24.4K+',
   runtime: 123,
   budget: 0,
   revenue: 0,
