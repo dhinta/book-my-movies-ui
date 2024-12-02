@@ -1,9 +1,6 @@
 import { Button } from '@/vendors/ui/button';
-import { MovieCard } from '@common/components';
-import { useSlider } from '@common/hooks/slider';
-import { Movie, NavigationDirection } from '@common/models';
-import { CircleChevronLeft, CircleChevronRight, Star } from 'lucide-react';
-import React, { useRef } from 'react';
+import { Star } from 'lucide-react';
+import { SimilarMovies } from '../similar-movies/similar-movies';
 
 const movie = {
   id: 1,
@@ -32,19 +29,7 @@ const movie = {
   revenue: 0,
 };
 
-const movies = Array.from({ length: 14 }, (_, index) => ({
-  ...movie,
-  id: index + 1,
-  title: `${movie.title} ${index + 1}`,
-}));
-
 export function MovieDetails() {
-  const sliderRef = useRef<HTMLDivElement>(null);
-  const { left, currentIndex, visibleCardsNum, onNavigate } = useSlider<Movie>(
-    movies,
-    sliderRef,
-    '.similar-movie-card',
-  );
   const { runtime, releaseDate } = movie;
   const formattedRuntime = `${Math.floor(runtime / 60)}h ${runtime % 60}m`;
 
@@ -107,48 +92,7 @@ export function MovieDetails() {
           </div>
         </div>
 
-        <div className="my-8 relative">
-          <h2 className="text-2xl font-semibold">You might also like</h2>
-
-          <CircleChevronLeft
-            size={48}
-            className={`absolute -left-12 top-[40%] p-0 cursor-pointer ${
-              currentIndex === 0 ? 'opacity-50 pointer-events-none' : ''
-            }`}
-            tabIndex={0}
-            onClick={() => onNavigate(NavigationDirection.LEFT)}
-          />
-
-          <CircleChevronRight
-            size={48}
-            className={`absolute -right-12 top-[40%] p-0 cursor-pointer ${
-              currentIndex >= movies.length - visibleCardsNum
-                ? 'opacity-50 pointer-events-none'
-                : ''
-            }`}
-            tabIndex={0}
-            onClick={() => onNavigate(NavigationDirection.RIGHT)}
-          />
-
-          <div
-            className="overflow-hidden relative h-[450px] my-8"
-            ref={sliderRef}
-          >
-            <div
-              className="flex flex-nowrap absolute transition-[left] duration-1000"
-              style={{ left }}
-            >
-              {movies.map(movie => (
-                <React.Fragment key={movie.id}>
-                  <MovieCard
-                    movie={movie}
-                    className="mx-2 w-60 similar-movie-card"
-                  />
-                </React.Fragment>
-              ))}
-            </div>
-          </div>
-        </div>
+        <SimilarMovies />
       </div>
     </>
   );
