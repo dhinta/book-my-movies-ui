@@ -1,9 +1,9 @@
-import { MovieCard } from '@/common/components';
-import { Movie } from '@common/models';
+import { MovieCard } from '@common/components';
+import { useSlider } from '@common/hooks';
+import { Movie, NavigationDirection } from '@common/models';
 import { CircleChevronLeft, CircleChevronRight } from 'lucide-react';
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { NavigationDirection, useSlider } from '../../hooks/slider';
 
 const movie = {
   id: 1,
