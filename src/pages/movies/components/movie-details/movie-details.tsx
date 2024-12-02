@@ -1,7 +1,7 @@
-import { MovieCard } from '@/common/components';
-import { Movie } from '@/common/models';
-import { NavigationDirection, useSlider } from '@/pages/home/hooks/slider';
 import { Button } from '@/vendors/ui/button';
+import { MovieCard } from '@common/components';
+import { Movie, NavigationDirection } from '@common/models';
+import { useSlider } from '@pages/home/hooks/slider';
 import { CircleChevronLeft, CircleChevronRight, Star } from 'lucide-react';
 import React, { useRef } from 'react';
 
