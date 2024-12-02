@@ -19,10 +19,10 @@ export function Carousel({ images }: Props): JSX.Element {
   }, [assets]);
 
   return (
-    <div className="relative h-[288px]" ref={ref}>
+    <div className="relative min-h-[300px]" ref={ref}>
       <Button
         variant="secondary"
-        className="absolute top-1/2 left-2 z-10 opacity-50"
+        className="absolute top-1/2 left-2 z-10 opacity-60"
         onClick={() => {
           const lastElement = assets.pop()!;
           assets.unshift(lastElement);
@@ -33,7 +33,7 @@ export function Carousel({ images }: Props): JSX.Element {
       </Button>
       <Button
         variant="secondary"
-        className="absolute top-1/2 right-2 z-10 opacity-50"
+        className="absolute top-1/2 right-2 z-10 opacity-60"
         onClick={() => {
           const firstElement = assets.shift()!;
           assets.push(firstElement);
