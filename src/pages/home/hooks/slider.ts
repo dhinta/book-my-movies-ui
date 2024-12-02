@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 
+// TODO: Move to common model
 export enum NavigationDirection {
   LEFT = 'left',
   RIGHT = 'right',
@@ -7,6 +8,7 @@ export enum NavigationDirection {
   DOWN = 'down',
 }
 
+// TODO: Move to common hooks
 export function useSlider<T>(
   data: T[],
   ref: React.RefObject<HTMLElement>,

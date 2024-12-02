@@ -1,4 +1,5 @@
 import { MovieCard } from '@/common/components';
+import { Movie } from '@common/models';
 import { CircleChevronLeft, CircleChevronRight } from 'lucide-react';
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
@@ -10,12 +11,14 @@ const movie = {
   overview:
     "Jake Sully and Ney'tiri have formed a family and are doing everything to stay together, but they are faced with a new threat from the past that could keep them apart.",
   genres: 'Action, Adventure, Fantasy',
+  casts: ["Auli'i Cravalho"],
+  languages: ['English', 'Spanish'],
   posterPath: '/avatar.jpg',
   thumbnailPath: '/images/avatar.jpg',
   releaseDate: '2022-12-14',
   likeCount: 0,
   rating: 0,
-  ratedBy: 0,
+  ratedBy: '5.5k+',
   runtime: 0,
   budget: 0,
   revenue: 0,
@@ -29,7 +32,7 @@ const movies = Array.from({ length: 15 }, (_, index) => ({
 
 export function UpcomingList() {
   const ref = useRef<HTMLDivElement>(null);
-  const { left, currentIndex, visibleCardsNum, onNavigate } = useSlider(
+  const { left, currentIndex, visibleCardsNum, onNavigate } = useSlider<Movie>(
     movies,
     ref,
     '.upcoming-movie-card',
@@ -38,7 +41,10 @@ export function UpcomingList() {
     <div className="w-full py-4 relative">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-2xl font-semibold">Upcoming Movies</h2>
-        <Link to="/movies" className="text-blue-600 visited:text-purple-600 ">
+        <Link
+          to="/movies/upcoming"
+          className="text-blue-600 visited:text-purple-600 "
+        >
           See All
         </Link>
       </div>

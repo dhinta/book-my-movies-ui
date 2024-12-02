@@ -1,20 +1,6 @@
+import { Movie } from '@common/models';
+import { slugify } from '@common/utils';
 import { Link } from 'react-router-dom';
-
-interface Movie {
-  id: number;
-  title: string;
-  overview: string;
-  genres: string;
-  posterPath: string;
-  thumbnailPath: string;
-  releaseDate: string;
-  likeCount: number;
-  rating: number;
-  ratedBy: number;
-  runtime: number;
-  budget: number;
-  revenue: number;
-}
 
 interface Props {
   movie: Movie;
@@ -22,8 +8,9 @@ interface Props {
 }
 
 export function MovieCard({ movie, className = '' }: Props) {
+  const url = `/movies/${slugify(movie.title)}/${movie.id}`;
   return (
-    <Link to={`/movies/${movie.id}`}>
+    <Link to={url}>
       <div className={`flex flex-col rounded-lg shadow-lg ${className}`}>
         <img
           src={movie.thumbnailPath}
