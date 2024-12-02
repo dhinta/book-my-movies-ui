@@ -38,7 +38,10 @@ export function UpcomingList() {
     <div className="w-full py-4 relative">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-2xl font-semibold">Upcoming Movies</h2>
-        <Link to="/movies" className="text-blue-600 visited:text-purple-600 ">
+        <Link
+          to="/movies/upcoming"
+          className="text-blue-600 visited:text-purple-600 "
+        >
           See All
         </Link>
       </div>
