@@ -1,7 +1,6 @@
 import { NavigationDirection } from '@common/models';
 import { useEffect, useState } from 'react';
 
-// TODO: Move to common hooks
 export function useSlider<T>(
   data: T[],
   ref: React.RefObject<HTMLElement>,
