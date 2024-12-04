@@ -8,12 +8,12 @@ import {
   SelectValue,
 } from '@/vendors/ui/select';
 
+import { SignedIn, SignedOut, useClerk } from '@clerk/clerk-react';
 import { Menu, Search } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { Signin } from '../signin/signin';
 
 export function Header() {
-  const isLoggedIn = false;
+  const { openSignIn } = useClerk();
 
   return (
     <header className="flex items-center py-3 max-w-[1280px] mx-auto">
@@ -33,7 +33,14 @@ export function Header() {
         />
       </div>
 
-      {!isLoggedIn && <Signin />}
+      <SignedOut>
+        <Button
+          className="bg-red-600 ml-8 text-white h-10"
+          onClick={() => openSignIn()}
+        >
+          Signin
+        </Button>
+      </SignedOut>
 
       <Select>
         <SelectTrigger className="w-[150px] h-10 ml-8">
@@ -46,11 +53,11 @@ export function Header() {
         </SelectContent>
       </Select>
 
-      {isLoggedIn && (
+      <SignedIn>
         <Button variant="ghost" size="icon">
           <Menu />
         </Button>
-      )}
+      </SignedIn>
     </header>
   );
 }
