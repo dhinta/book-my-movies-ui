@@ -1,6 +1,6 @@
 import { Home } from '@pages/home';
 import { MovieDetails, MovieList } from '@pages/movies';
-import { SignInPage } from '@shared/auth';
+import { SignInPage, SignUpPage } from '@shared/auth';
 import { FixedLayout, PrivateLayout, PublicLayout } from '@shared/layouts';
 import { createBrowserRouter, redirect } from 'react-router-dom';
 
@@ -34,6 +34,10 @@ export const routes = createBrowserRouter([
       {
         path: 'sign-in/*',
         element: <SignInPage />,
+      },
+      {
+        path: 'sign-up/*',
+        element: <SignUpPage />,
       },
     ],
   },

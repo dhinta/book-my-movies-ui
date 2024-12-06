@@ -7,6 +7,7 @@ import './index.css';
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 const SIGN_IN_REDIRECT_URL = import.meta.env.CLERK_SIGN_IN_FORCE_REDIRECT_URL;
 const SIGN_IN_URL = import.meta.env.CLERK_SIGN_IN_URL;
+const SIGN_UP_URL = import.meta.env.CLERK_SIGN_UP_URL;
 
 if (!PUBLISHABLE_KEY) {
   throw new Error('Missing Publishable Key');
@@ -19,6 +20,7 @@ createRoot(document.getElementById('root')!).render(
       afterSignOutUrl="/"
       signInFallbackRedirectUrl={SIGN_IN_REDIRECT_URL}
       signInUrl={SIGN_IN_URL}
+      signUpUrl={SIGN_UP_URL}
     >
       <App />
     </ClerkProvider>

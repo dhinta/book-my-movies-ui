@@ -1,22 +1,26 @@
-import { Footer, Header } from '@/shared/app-shell';
-import { useSignIn } from '@clerk/clerk-react';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Loader } from '@common/components';
+import { useAuthentication } from '@common/hooks/authentication';
+import { Footer, Header } from '@shared/app-shell';
+import { Outlet } from 'react-router-dom';
 
 export function PrivateLayout() {
-  const { isLoaded, signIn } = useSignIn();
-  const navigate = useNavigate();
+  const { isLoaded } = useAuthentication(); // TODO: Can we use it in router action or load function?
 
-  if (!isLoaded) return;
-
-  if (signIn.status === null) {
-    navigate('/auth');
+  if (!isLoaded) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <Loader />
+      </div>
+    );
   }
 
   return (
-    <div className="text-theme-dark">
-      <Header />
-      <Outlet />
-      <Footer />
-    </div>
+    isLoaded && (
+      <div className="text-theme-dark">
+        <Header />
+        <Outlet />
+        <Footer />
+      </div>
+    )
   );
 }

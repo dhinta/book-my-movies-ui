@@ -52,6 +52,7 @@ export default {
         },
         'theme-dark': '#423E3A',
         'theme-dark-grey': 'rgb(51, 51, 51)',
+        'theme-red': '#FF3131',
       },
     },
   },

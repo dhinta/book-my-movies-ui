@@ -9,8 +9,9 @@ import {
 } from '@/vendors/ui/select';
 
 import { SignedIn, SignedOut, useClerk } from '@clerk/clerk-react';
-import { Menu, Search } from 'lucide-react';
+import { Search } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { SideMenu } from '../side-menu/side-menu';
 
 export function Header() {
   const { openSignIn } = useClerk();
@@ -43,7 +44,7 @@ export function Header() {
       </SignedOut>
 
       <Select>
-        <SelectTrigger className="w-[150px] h-10 ml-8">
+        <SelectTrigger className="w-[150px] h-10 ml-8 mr-8">
           <SelectValue placeholder="City" />
         </SelectTrigger>
         <SelectContent>
@@ -54,9 +55,7 @@ export function Header() {
       </Select>
 
       <SignedIn>
-        <Button variant="ghost" size="icon">
-          <Menu />
-        </Button>
+        <SideMenu />
       </SignedIn>
     </header>
   );

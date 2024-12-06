@@ -1,4 +1,4 @@
-import { Carousel, FeaturedBanner } from '@/common/components';
+import { Carousel, FeaturedBanner } from '@common/components';
 import { RecommendedList } from '../recommended-list/recommended-list';
 import { UpcomingList } from '../upcoming-list/upcoming-list';
 
