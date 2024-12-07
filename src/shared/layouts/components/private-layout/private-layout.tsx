@@ -16,11 +16,13 @@ export function PrivateLayout() {
 
   return (
     isLoaded && (
-      <div className="text-theme-dark">
-        <Header />
-        <Outlet />
+      <>
+        <div className="text-theme-dark w-[1280px] mx-auto">
+          <Header />
+          <Outlet />
+        </div>
         <Footer />
-      </div>
+      </>
     )
   );
 }

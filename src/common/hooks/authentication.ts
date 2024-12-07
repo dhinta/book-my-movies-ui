@@ -7,7 +7,7 @@ interface UseAuthentication {
 }
 
 export function useAuthentication(): UseAuthentication {
-  const { isLoaded, isSignedIn, ...rest } = useAuth();
+  const { isLoaded, isSignedIn } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -15,8 +15,6 @@ export function useAuthentication(): UseAuthentication {
       navigate('/auth');
     }
   }, [navigate, isLoaded, isSignedIn]);
-
-  console.log(rest);
 
   return {
     isLoaded,
