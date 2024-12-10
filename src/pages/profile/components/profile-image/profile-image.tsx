@@ -31,7 +31,7 @@ export function ProfileImage() {
   };
 
   return (
-    <div className="py-8 pl-8 w-3/4">
+    <div className="py-8 w-3/4">
       <h2 className="text-xl font-semibold text-theme-red mb-4">
         Profile Picture
       </h2>

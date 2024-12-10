@@ -17,8 +17,6 @@ export function SideMenu() {
   const { signOut, session } = useClerk();
   const { user, isLoaded } = useUser();
 
-  console.log(user);
-
   const onSignOut = async () => {
     await signOut();
     await session?.remove();
