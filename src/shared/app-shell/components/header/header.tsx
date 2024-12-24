@@ -8,12 +8,13 @@ import {
   SelectValue,
 } from '@/vendors/ui/select';
 
-import { Menu, Search } from 'lucide-react';
+import { SignedIn, SignedOut, useClerk } from '@clerk/clerk-react';
+import { Search } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { Signin } from '../signin/signin';
+import { SideMenu } from '../side-menu/side-menu';
 
 export function Header() {
-  const isLoggedIn = false;
+  const { openSignIn } = useClerk();
 
   return (
     <header className="flex items-center py-3 max-w-[1280px] mx-auto">
@@ -33,10 +34,17 @@ export function Header() {
         />
       </div>
 
-      {!isLoggedIn && <Signin />}
+      <SignedOut>
+        <Button
+          className="bg-red-600 ml-8 text-white h-10"
+          onClick={() => openSignIn()}
+        >
+          Signin
+        </Button>
+      </SignedOut>
 
       <Select>
-        <SelectTrigger className="w-[150px] h-10 ml-8">
+        <SelectTrigger className="w-[150px] h-10 ml-8 mr-8">
           <SelectValue placeholder="City" />
         </SelectTrigger>
         <SelectContent>
@@ -46,11 +54,9 @@ export function Header() {
         </SelectContent>
       </Select>
 
-      {isLoggedIn && (
-        <Button variant="ghost" size="icon">
-          <Menu />
-        </Button>
-      )}
+      <SignedIn>
+        <SideMenu />
+      </SignedIn>
     </header>
   );
 }

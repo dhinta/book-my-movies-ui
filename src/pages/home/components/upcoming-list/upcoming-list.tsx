@@ -6,13 +6,22 @@ import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 const movie = {
-  id: 1,
+  _id: '1',
   title: 'Avatar: The Way of Water',
   overview:
     "Jake Sully and Ney'tiri have formed a family and are doing everything to stay together, but they are faced with a new threat from the past that could keep them apart.",
   genres: 'Action, Adventure, Fantasy',
   casts: ["Auli'i Cravalho"],
-  languages: ['English', 'Spanish'],
+  languages: [
+    {
+      code: 'en_US',
+      name: 'English',
+    },
+    {
+      code: 'es_SP',
+      name: 'Spanish',
+    },
+  ],
   posterPath: '/avatar.jpg',
   thumbnailPath: '/images/avatar.jpg',
   releaseDate: '2022-12-14',
@@ -26,7 +35,7 @@ const movie = {
 
 const movies = Array.from({ length: 15 }, (_, index) => ({
   ...movie,
-  id: index + 1,
+  _id: `movie-${index + 1}`,
   title: `${movie.title} ${index + 1}`,
 }));
 
@@ -75,7 +84,7 @@ export function UpcomingList() {
           style={{ left }}
         >
           {movies.map(movie => (
-            <React.Fragment key={movie.id}>
+            <React.Fragment key={movie._id}>
               <MovieCard
                 movie={movie}
                 className="mx-2 w-60 upcoming-movie-card"

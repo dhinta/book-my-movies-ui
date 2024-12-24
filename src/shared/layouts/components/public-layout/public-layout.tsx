@@ -1,7 +1,7 @@
-import { Header } from '@shared/header';
+import { Footer, Header } from '@/shared/app-shell';
 import { Outlet } from 'react-router-dom';
-import { Footer } from '../footer/footer';
-export function AppContainer() {
+
+export function PublicLayout() {
   return (
     <div className="text-theme-dark">
       <Header />

@@ -7,7 +7,18 @@ const movie = {
   overview:
     'After receiving an unexpected call from her wayfinding ancestors, Moana journeys alongside Maui and a new crew to the far seas of Oceania and into dangerous, long-lost waters for an adventure unlike anything she`s ever faced.',
   genres: 'Action, Adventure, Fantasy',
-  languages: ['English', 'Spanish'],
+  languages: [
+    {
+      _id: '676aadc192b22bb6e9b1ea3f',
+      code: 'en_US',
+      name: 'English',
+    },
+    {
+      _id: '676aadc192b22bb6e9b1ea3f',
+      code: 'es_SP',
+      name: 'Spanish',
+    },
+  ],
   casts: [
     "Auli'i Cravalho",
     'Dwayne Johnson',
@@ -30,13 +41,13 @@ const movie = {
 
 const movies = Array.from({ length: 30 }, (_, index) => ({
   ...movie,
-  id: index + 1,
+  _id: `${index + 1}`,
   title: `${movie.title} ${index + 1}`,
 }));
 
 export function MovieList() {
   const { type = 'recommended' } = useParams();
-  console.log(type);
+
   return (
     <div className="max-w-[1280px] mx-auto">
       <h1 className="text-2xl font-semibold text-center capitalize">

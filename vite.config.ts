@@ -8,12 +8,14 @@ export default defineConfig({
   server: {
     port: 80,
   },
+  envPrefix: 'BMM_',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
       '@pages': path.resolve(__dirname, './src/pages'),
       '@shared': path.resolve(__dirname, './src/shared'),
       '@common': path.resolve(__dirname, './src/common'),
+      '@config': path.resolve(__dirname, './src/configs'),
     },
   },
 });
