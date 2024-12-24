@@ -25,7 +25,9 @@ export function SideMenu() {
     async function getOrg() {
       if (user) {
         const { data } = await user.getOrganizationMemberships();
-        const permissionList = data[0].permissions as string[];
+        const permissionList = data.length
+          ? (data[0].permissions as string[])
+          : [];
         setPermissions(permissionList);
       }
     }

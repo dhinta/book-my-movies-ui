@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 export enum LoadingType {
   INIT = 'init',
@@ -15,10 +15,12 @@ export type LoadingState = LoadingType | ErrorState;
 export function useLoading(loading = LoadingType.INIT) {
   const [loadingStatus, setLoadingStatus] = useState<LoadingState>(loading);
 
+  function setLoading(loading: LoadingState) {
+    setLoadingStatus(loading);
+  }
+
   return {
-    setLoading(loading: LoadingState) {
-      setLoadingStatus(loading);
-    },
+    setLoading: useCallback(setLoading, []),
     isLoading: () => loadingStatus === LoadingType.LOADING,
     isLoaded: () => loadingStatus !== LoadingType.LOADING,
     errorState: () =>

@@ -1,9 +1,11 @@
+import { Language } from './common';
+
 export interface Movie {
-  id: number;
+  _id: string;
   title: string;
   overview: string;
   casts: string[];
-  languages: string[];
+  languages: Language[];
   genres: string;
   posterPath: string;
   thumbnailPath: string;

@@ -22,6 +22,7 @@ createRoot(document.getElementById('root')!).render(
       signInFallbackRedirectUrl={SIGN_IN_REDIRECT_URL}
       signInUrl={SIGN_IN_URL}
       signUpUrl={SIGN_UP_URL}
+      touchSession={false}
     >
       <App />
     </ClerkProvider>

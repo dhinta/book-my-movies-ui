@@ -5,11 +5,22 @@ import { CircleChevronLeft, CircleChevronRight } from 'lucide-react';
 import React, { useRef } from 'react';
 
 const movie = {
-  id: 1,
+  _id: '1',
   title: 'Moana 2',
   overview:
     'After receiving an unexpected call from her wayfinding ancestors, Moana journeys alongside Maui and a new crew to the far seas of Oceania and into dangerous, long-lost waters for an adventure unlike anything she`s ever faced.',
-  languages: ['English', 'Spanish'],
+  languages: [
+    {
+      _id: '676aadc192b22bb6e9b1ea3f',
+      code: 'en_US',
+      name: 'English',
+    },
+    {
+      _id: '676aadc192b22bb6e9b1ea3f',
+      code: 'es_SP',
+      name: 'Spanish',
+    },
+  ],
   casts: [
     "Auli'i Cravalho",
     'Dwayne Johnson',

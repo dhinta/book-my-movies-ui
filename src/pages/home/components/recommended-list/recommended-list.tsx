@@ -5,13 +5,22 @@ import { CircleChevronLeft, CircleChevronRight } from 'lucide-react';
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 
-const movie = {
-  id: 1,
+const movie: Movie = {
+  _id: '1',
   title: 'Avatar: The Way of Water',
   overview:
     "Jake Sully and Ney'tiri have formed a family and are doing everything to stay together, but they are faced with a new threat from the past that could keep them apart.",
   genres: 'Action, Adventure, Fantasy',
-  languages: ['English', 'Spanish'],
+  languages: [
+    {
+      code: 'en_US',
+      name: 'English',
+    },
+    {
+      code: 'es_SP',
+      name: 'Spanish',
+    },
+  ],
   casts: [
     "Auli'i Cravalho",
     'Dwayne Johnson',
@@ -33,7 +42,7 @@ const movie = {
 
 const movies = Array.from({ length: 13 }, (_, index) => ({
   ...movie,
-  id: index + 1,
+  _id: `${movie._id}-${index + 1}`,
   title: `${movie.title} ${index + 1}`,
 }));
 
@@ -80,7 +89,7 @@ export function RecommendedList() {
           style={{ left }}
         >
           {movies.map(movie => (
-            <React.Fragment key={movie.id}>
+            <React.Fragment key={movie._id}>
               <MovieCard
                 movie={movie}
                 className="mx-2 w-60 recommended-movie-card"

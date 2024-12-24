@@ -8,7 +8,7 @@ interface Props {
 }
 
 export function MovieCard({ movie, className = '' }: Props) {
-  const url = `/movies/${slugify(movie.title)}/${movie.id}`;
+  const url = `/movies/${slugify(movie.title)}/${movie._id}`;
   return (
     <Link to={url}>
       <div className={`flex flex-col rounded-lg shadow-lg ${className}`}>

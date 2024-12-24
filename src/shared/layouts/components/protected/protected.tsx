@@ -1,5 +1,7 @@
-import { hasPermission } from '@/common/utils';
 import { useUser } from '@clerk/clerk-react';
+import { Loader } from '@common/components';
+import { LoadingType, useLoading } from '@common/hooks/loading';
+import { hasPermission } from '@common/utils';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -15,19 +17,24 @@ export function Protected({
   link = '/',
 }: Props): JSX.Element {
   const [permissions, setPermissions] = useState<string[]>([]);
+  const { isLoading, setLoading } = useLoading();
 
   const { user } = useUser();
 
   useEffect(() => {
     async function getOrg() {
       if (user) {
+        setLoading(LoadingType.LOADING);
         const { data } = await user.getOrganizationMemberships();
-        const permissionList = data[0].permissions as string[];
+        const permissionList = data.length
+          ? (data[0].permissions as string[])
+          : [];
         setPermissions(permissionList);
+        setLoading(LoadingType.LOADED);
       }
     }
     getOrg();
-  }, [user]);
+  }, [user, setLoading]);
 
   const fallbackElem = (
     <p className="flex justify-center h-screen text-3xl">
@@ -38,6 +45,13 @@ export function Protected({
       to go back.
     </p>
   );
+
+  if (isLoading())
+    return (
+      <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50">
+        <Loader />
+      </div>
+    );
 
   return hasPermission(permissions, permission) ? (
     <>{children}</>
