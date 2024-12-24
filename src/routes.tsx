@@ -1,10 +1,17 @@
 import { Dashboard } from '@pages/dashboard';
 import { Home } from '@pages/home';
 import { MovieDetails, MovieList } from '@pages/movies';
+import { ManageMovies } from '@pages/movies/components/manage-movies/manage-movies';
 import { Profile } from '@pages/profile';
 import { SignInPage, SignUpPage } from '@shared/auth';
-import { FixedLayout, PrivateLayout, PublicLayout } from '@shared/layouts';
+import {
+  FixedLayout,
+  PrivateLayout,
+  Protected,
+  PublicLayout,
+} from '@shared/layouts';
 import { createBrowserRouter, redirect } from 'react-router-dom';
+import { Permissions } from './common/models';
 
 export const routes = createBrowserRouter([
   {
@@ -60,6 +67,20 @@ export const routes = createBrowserRouter([
       {
         path: '',
         element: <Profile />,
+      },
+    ],
+  },
+  {
+    path: '/manage/movies',
+    element: <PrivateLayout />,
+    children: [
+      {
+        path: '',
+        element: (
+          <Protected permission={Permissions.MANAGE_MOVIES} link="/">
+            <ManageMovies />
+          </Protected>
+        ),
       },
     ],
   },

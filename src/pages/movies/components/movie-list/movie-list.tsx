@@ -36,7 +36,7 @@ const movies = Array.from({ length: 30 }, (_, index) => ({
 
 export function MovieList() {
   const { type = 'recommended' } = useParams();
-  console.log(type);
+
   return (
     <div className="max-w-[1280px] mx-auto">
       <h1 className="text-2xl font-semibold text-center capitalize">

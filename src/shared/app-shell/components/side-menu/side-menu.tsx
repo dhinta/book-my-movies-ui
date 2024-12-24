@@ -10,17 +10,33 @@ import {
   SheetTrigger,
 } from '@/vendors/ui/sheet';
 import { useClerk, useUser } from '@clerk/clerk-react';
+import { Permissions } from '@common/models';
+import { hasPermission } from '@common/utils';
 import { Menu } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 export function SideMenu() {
-  const { signOut, session } = useClerk();
+  const [permissions, setPermissions] = useState<string[]>([]);
   const { user, isLoaded } = useUser();
+  const { signOut, session } = useClerk();
+
+  useEffect(() => {
+    async function getOrg() {
+      if (user) {
+        const { data } = await user.getOrganizationMemberships();
+        const permissionList = data[0].permissions as string[];
+        setPermissions(permissionList);
+      }
+    }
+    getOrg();
+  }, [user]);
 
   const onSignOut = async () => {
     await signOut();
     await session?.remove();
   };
+
   return (
     isLoaded && (
       <Sheet>
@@ -82,6 +98,38 @@ export function SideMenu() {
                     </Link>
                   </SheetClose>
                 </li>
+
+                {hasPermission(permissions, Permissions.MANAGE_MOVIES) && (
+                  <li>
+                    <SheetClose asChild>
+                      <Link
+                        to="/manage/movies"
+                        className="flex items-center py-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="lucide lucide-file-video-2"
+                        >
+                          <path d="M4 22h14a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v4" />
+                          <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+                          <rect width="8" height="6" x="2" y="12" rx="1" />
+                          <path d="m10 15.5 4 2.5v-6l-4 2.5" />
+                        </svg>
+                        <span className="flex-1 ms-3 whitespace-nowrap">
+                          Manage Movies
+                        </span>
+                      </Link>
+                    </SheetClose>
+                  </li>
+                )}
 
                 <li className="flex items-center py-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                   <svg

@@ -11,9 +11,6 @@ import { GeneralInfo } from '../general-info/general-info';
 export function Profile() {
   const { setLoading, isLoading, errorState, setErrorState } = useLoading();
   const { user } = useUser();
-  const passwordError = errorState()?.message;
-
-  console.log(passwordError);
 
   const onGeneralInfoUpdate = async (data: GeneralInfoModel) => {
     if (user) {

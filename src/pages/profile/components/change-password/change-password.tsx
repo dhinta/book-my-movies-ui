@@ -39,7 +39,6 @@ interface Props {
 }
 
 export function ChangePassword({ onUpdate }: Props) {
-  //   const form = useForm();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -73,7 +72,12 @@ export function ChangePassword({ onUpdate }: Props) {
               <FormItem className="mb-4">
                 <FormLabel className="text-lg">Password</FormLabel>
                 <FormControl>
-                  <Input type="password" className="py-6" {...field} />
+                  <Input
+                    type="password"
+                    className="py-6"
+                    autoComplete="off"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -87,7 +91,12 @@ export function ChangePassword({ onUpdate }: Props) {
               <FormItem className="mb-4">
                 <FormLabel className="text-lg">New Password</FormLabel>
                 <FormControl>
-                  <Input type="password" className="py-6" {...field} />
+                  <Input
+                    type="password"
+                    className="py-6"
+                    autoComplete="off"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -101,7 +110,12 @@ export function ChangePassword({ onUpdate }: Props) {
               <FormItem className="mb-4">
                 <FormLabel className="text-lg">Retype New Password</FormLabel>
                 <FormControl>
-                  <Input type="password" className="py-6" {...field} />
+                  <Input
+                    type="password"
+                    className="py-6"
+                    autoComplete="off"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>

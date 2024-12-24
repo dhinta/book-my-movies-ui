@@ -10,7 +10,8 @@
       "@/*": ["./src/*"],
       "@pages/*": ["./src/pages/*"],
       "@shared/*": ["./src/shared/*"],
-      "@common/*": ["./src/common/*"]
+      "@common/*": ["./src/common/*"],
+      "@config/*": ["./src/configs/*"]
     }
   }
 }
